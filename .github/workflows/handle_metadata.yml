@@ -53,8 +53,10 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip setuptools
+          # Install core dependencies first
+          python -m pip install git+https://github.com/brain-score/core.git@plugin_metadata
+          # Install vision with no-deps since dependencies are already installed
           python -m pip install ".[test]"
-          pip install pyyaml
           
       - name: Configure Git
         run: |
