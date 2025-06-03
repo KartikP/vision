@@ -53,7 +53,10 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          python -m pip install ".[test]"
+          # Install specific branch of brainscore-core
+          python -m pip install git+https://github.com/brain-score/core.git@plugin_metadata
+          # Install vision with no-deps to avoid dependency conflicts
+          python -m pip install --no-deps ".[test]"
           pip install pyyaml
           
       - name: Configure Git
